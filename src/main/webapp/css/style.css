@@ -1,0 +1,263 @@
+/* root variables */
+:root {
+    --gap: 10px;
+    --primary-color: #014141;
+    --hover-color: #027070;
+}
+
+/* Common styles */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.w-100 {
+    width: 100px;
+}
+
+.w-300 {
+    width: 300px;
+}
+
+.w-500 {
+    width: 500px;
+}
+
+.dk-overlay {
+    opacity: 0.4;
+    background: linear-gradient(to left, var(--primary-color),black);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.dk-err, .dk-msg {
+	padding: 10px;
+	text-align: center;
+}
+.dk-err {
+	color: red;
+}
+.dk-msg {
+	color: yellow;
+}
+.dk-separator {
+    width: 90%;
+    border-bottom: 1px solid #aaa;
+}
+.dk-wrapper {
+    box-shadow: 0 0 3px #aaa;
+    padding: 10px;
+    margin: auto;
+    height: auto;
+    width: 100%;
+}
+.dk-wrapper:hover {
+    box-shadow: 0 0 8px #aaa;
+}
+.dk-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.dk-input {
+    border: none;
+    box-shadow: 0 0 3px #aaa;
+    padding: 5px;
+    height: 25px;
+    display: block;
+    width: 90%;
+    margin: auto;
+    margin-bottom: var(--gap);
+    border-radius: 5px;
+}
+
+.dk-input:hover {
+    box-shadow: 0 0 6px #aaa;
+}
+
+.dk-input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: gray;
+}
+
+.dk-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.dk-link:hover {
+    color: var(--hover-color);
+    cursor: pointer;
+}
+
+.dk-btn-round {
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+    display: block;
+    margin: auto;
+    font-weight: 600;
+    margin-bottom: var(--gap);
+}
+
+.dk-btn-round:hover {
+    box-shadow: 0px 3px 8px black;
+    cursor: pointer;
+    background-color: var(--hover-color);
+}
+
+.dk-logo {
+    color: var(--primary-color);
+    font-size: 50px;
+    font-weight: 800;
+    text-shadow: 0px 0px 1px black ,1px 1px 3px var(--hover-color);
+}
+
+
+/* Signin page */
+#dk-signin-wrapper {
+    position: absolute;
+    left: 10%;
+    text-align: center;
+}
+
+#dk-signin-wrapper .dk-logo {
+    position: fixed;
+    top: 10%;
+}
+
+#dk-signin-wrapper #dk-headline {
+    position: fixed;
+    top: 30%;
+    color: white;
+    font-size: 30px;
+    animation: 3s slideup ease-out 1;
+}
+
+#dk-signin-wrapper #dk-signin-form {
+    position: fixed;
+    top: 50%;
+}
+
+#dk-main-img img{
+    height: 100vh;
+    width: 50%;
+    position: fixed;
+    right: 0px;
+    animation: 3s slideleft ease-out 1;
+}
+
+/* Navbar */
+.dk-nav {
+    display: flex;
+    background-color: black;
+    height: 80px;
+    width: 100%;
+    padding: 10px 30px;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.dk-nav .dk-menu-item {
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    top: 20px;
+}
+
+.dk-nav .dk-menu-item:nth-child(2) {
+    margin-left: auto;
+}
+
+/* All Docs page */
+.dk-doc{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.dk-doc-header {
+    display: flex;
+    justify-content: space-between;
+}
+.dk-doc-name {
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--primary-color);
+}
+.dk-doc-toolbar {
+    display: flex;
+    gap: 10px;
+}
+.dk-doc-toolbar i{
+    cursor: pointer;
+}
+
+/* Single doc page */
+.dk-single-doc {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 3px #aaa;
+    gap: 10px;
+    padding: 20px;
+}
+.dk-single-doc .dk-doc-right-sb {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 75vh;
+    overflow: auto;
+}
+.dk-doc-right-sb .dk-doc-name {
+    text-transform: uppercase;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+.dk-doc-right-sb button {
+   width: 100px;
+   margin: 0;
+}
+.dk-single-doc .dk-doc-preview {
+    width: 80%;
+    height: 75vh;
+    background-color: #aaa;
+    overflow: auto;
+}
+/* Animation Keyframes */
+@keyframes slideup {
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideleft {
+    0% {
+        opacity: 0;
+        transform: translateX(80%);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #dk-main-img img{
+        display: none;
+    }
+}
