@@ -6,6 +6,7 @@ import java.util.HashMap;
 import beans.User;
 import dao.UserDao;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import services.ValidateUser;
 /**
  * Servlet implementation class MainServlet
  */
+@WebServlet("/app/loginHandler")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -33,16 +35,17 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("Log: Request for login");
+		String contextPath = request.getContextPath();
 		HttpSession session = request.getSession();
+		
 		if(session.getAttribute("user") != null) {
-			request.getRequestDispatcher("home.jsp").forward(request, response);
+			response.sendRedirect(contextPath + "/home");
 			return;
 		}
 		
-		
-		String login = request.getParameter("login").trim();
-		String pass = request.getParameter("password").trim();
+		String login = request.getParameter("login");
+		String pass = request.getParameter("password");
 		
 		try {
 			
@@ -60,16 +63,18 @@ public class LoginServlet extends HttpServlet {
 				request.setAttribute("login", login);
 				request.setAttribute("password", pass);
 				
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
 				return;
 			}
 			
+			login = login.trim();
+			pass = pass.trim();
 			User user = userService.validate(login, pass);
 			
 			session.setAttribute("user", user);
 			
 			// Redirect to home page
-			request.getRequestDispatcher("home.jsp").forward(request, response);
+			response.sendRedirect(contextPath + "/home");
 			
 		} catch(Exception e) {
 			if(e.getMessage().equals("UserNotFound")) {
@@ -83,7 +88,7 @@ public class LoginServlet extends HttpServlet {
 			// Redirect to login page again
 			request.setAttribute("login", login);
 			request.setAttribute("password", pass);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(request, response);
 		}
 		
 	}

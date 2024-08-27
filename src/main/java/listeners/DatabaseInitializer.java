@@ -5,12 +5,14 @@ import java.sql.Statement;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 import utilities.ConnectionManager;
 
 /**
  * Application Lifecycle Listener implementation class InitDatabase
  *
  */
+@WebListener
 public class DatabaseInitializer implements ServletContextListener {
 	
 	private Connection con;

@@ -8,6 +8,8 @@ public class Doc {
 	private String note;
 	private int userId;
 	
+	public Doc() {}
+	
 	public Doc(int id, String name, String url, String note, int userId) {
 		super();
 		this.id = id;

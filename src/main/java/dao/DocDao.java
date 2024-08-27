@@ -30,15 +30,14 @@ public class DocDao {
 				doc = new Doc(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
 			}
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Unable to get doc: " + e.getMessage());
 		}
 		
-		ConnectionManager.closeConnection();
 		return doc;
 	}
 	
-	public ArrayList<Doc> getAllDOcs(int userId) {
-		ArrayList<Doc> docs = null;
+	public ArrayList<Doc> getAllDocs(int userId) {
+		ArrayList<Doc> docs = new ArrayList<>();
 		try {
 			PreparedStatement p = con.prepareStatement("select * from doc where user_id = ?");
 			p.setInt(1, userId);
@@ -47,10 +46,9 @@ public class DocDao {
 				docs.add(new Doc(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("Unable to get docs: " + e.getMessage());
 		}
 		
-		ConnectionManager.closeConnection();
 		return docs;
 	}
 	
@@ -72,10 +70,9 @@ public class DocDao {
 			}
 			
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Unable to update doc: " + e.getMessage());
 		}
 		
-		ConnectionManager.closeConnection();
 		return isUpdated;
 	}
 	
@@ -86,7 +83,7 @@ public class DocDao {
 			PreparedStatement p = con.prepareStatement("insert into doc values(null, ?,?,?,?);");
 			p.setString(1, doc.getName());
 			p.setString(2, doc.getUrl());
-			p.setString(3, doc.getName());
+			p.setString(3, doc.getNote());
 			p.setInt(4, doc.getUserId());
 			
 			int r = p.executeUpdate();
@@ -98,10 +95,9 @@ public class DocDao {
 				}
 			}
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Unable to insert doc: " + e.getMessage());
 		}
 		
-		ConnectionManager.closeConnection();
 		return id;
 	}
 	
@@ -115,10 +111,9 @@ public class DocDao {
 				isDeleted = true;
 			}
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Unable to delete doc: " + e.getMessage());
 		}
 		
-		ConnectionManager.closeConnection();
 		return isDeleted;
 	}
 }

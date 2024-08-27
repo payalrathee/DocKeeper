@@ -5,6 +5,18 @@
     --hover-color: #027070;
 }
 
+::-webkit-scrollbar {
+    width: 3px;
+}
+  
+::-webkit-scrollbar-track {
+background: black;
+}
+
+::-webkit-scrollbar-thumb {
+background: var(--primary-color);
+}
+
 /* Common styles */
 body {
     margin: 0;
@@ -63,7 +75,7 @@ body {
     gap: 20px;
     width: 80%;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .dk-input {
@@ -84,6 +96,10 @@ body {
 
 .dk-input:focus {
     outline: none;
+}
+
+.dk-textarea {
+    height: 200px;
 }
 
 ::placeholder {
@@ -110,12 +126,15 @@ body {
     margin: auto;
     font-weight: 600;
     margin-bottom: var(--gap);
+    text-align: center;
+    min-width: 150px;
 }
 
 .dk-btn-round:hover {
     box-shadow: 0px 3px 8px black;
     cursor: pointer;
     background-color: var(--hover-color);
+    color: white
 }
 
 .dk-logo {
@@ -182,6 +201,10 @@ body {
 }
 
 /* All Docs page */
+.dk-docs-wrapper .dk-btn-round {
+	width: 50%;
+}
+
 .dk-doc{
     display: flex;
     flex-direction: column;
@@ -219,6 +242,7 @@ body {
     gap: 20px;
     height: 75vh;
     overflow: auto;
+    padding: 0 15px;
 }
 .dk-doc-right-sb .dk-doc-name {
     text-transform: uppercase;
@@ -233,8 +257,23 @@ body {
     width: 80%;
     height: 75vh;
     background-color: #aaa;
-    overflow: auto;
 }
+
+.dk-single-doc .dk-doc-preview iframe{
+    width: 100%;
+    height: 100%;
+}
+
+/* Add form */
+.dk-add-form {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
 /* Animation Keyframes */
 @keyframes slideup {
     0% {
