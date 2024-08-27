@@ -4,6 +4,8 @@ Dockeeper is a file management system that allows users to manage various types 
 
 ![image](https://github.com/user-attachments/assets/905b6c42-4eab-4713-9d90-cebd940bb0d1)
 
+![image](https://github.com/user-attachments/assets/b5932a6c-2603-49be-9757-1064d7960238)
+
 
 ## Features
 
